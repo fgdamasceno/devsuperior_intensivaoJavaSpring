@@ -23,7 +23,9 @@ public class Game {
 	private String platforms;
 	private Double score;
 	private String imgUrl;
+	@Column(columnDefinition = "TEXT") // PARA QUE A JPA GERE UM CAMPO NO DB COMO 'TEXTO' E NÃO COMO varChar(255)
 	private String shortDescription;
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
 	public Game() {
