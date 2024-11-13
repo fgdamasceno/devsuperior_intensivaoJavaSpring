@@ -12,12 +12,12 @@ import com.aulasjavaspring.dslist.dto.GameDTO;
 import com.aulasjavaspring.dslist.dto.GameMinDTO;
 import com.aulasjavaspring.dslist.services.GameService;
 
-@RestController
-@RequestMapping(value = "/games")
+@RestController // CONFIGURA CLASSE COMO CONTROLADORA
+@RequestMapping(value = "/games") // MAPEIA O CAMINHO PARA OS DADOS
 public class GameController {
 	
 	@Autowired
-	private GameService gameService;
+	private GameService gameService; // INJETA 'GameService' DENTRO DO 'GameController'
 
 	@GetMapping(value = "/{id}")
 	public GameDTO findById(@PathVariable Long id) {
@@ -25,7 +25,7 @@ public class GameController {
 		return result;
 	}
 	
-	@GetMapping
+	@GetMapping // MAPEIA COM O VERBO HTTP 'GET' PARA OBTER OS DADOS
 	public List<GameMinDTO> findAll() {
 		List<GameMinDTO> result = gameService.findAll();
 		return result;

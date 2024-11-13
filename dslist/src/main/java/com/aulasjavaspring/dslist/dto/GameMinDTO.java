@@ -23,7 +23,7 @@ public class GameMinDTO {
 		this.shortDescription = shortDescription;
 	}
 	
-	public GameMinDTO(Game entity) {
+	public GameMinDTO(Game entity) { // CONSTRUTOR QUE COPIA OS DADOS DA CLASSE 'GAME'
 		id = entity.getId();
 		title = entity.getTitle();
 		year = entity.getYear();

@@ -9,21 +9,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "tb_game")
+@Entity // CONFIGURA A CLASSE PARA QUE SEJA EQUIVALENTE A UMA TABELA DO BANCO DE DADOS RELACIONAL
+@Table(name = "tb_game") // CONFIGURA UM NOME CUSTOMIZADO PARA UMA TABELA SQL NO BANCO DE DADOS E DEFINE SEU NOME NO PARAMETRO
 public class Game {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id // DEFINE O id COMO CHAVE PRIMARIA
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // PARA QUE O id SEJA AUTO INCREMENTÁVEL PELO BANCO DE DADOS
 	private Long id;
 	private String title;
-	@Column(name = "game_year") // CUSTOMIZANDO O NOME DA COLUNA NO BD PARA EVITAR CONFLITO COM PALAVRA RESERVADA year
+	@Column(name = "game_year") // CUSTOMIZANDO O NOME DA COLUNA NO BD PARA EVITAR CONFLITO COM PALAVRA RESERVADA 'year'
 	private Integer year;
 	private String genre;
 	private String platforms;
 	private Double score;
 	private String imgUrl;
-	@Column(columnDefinition = "TEXT") // PARA QUE A JPA GERE UM CAMPO NO DB COMO 'TEXTO' E NÃO COMO varChar(255)
+	@Column(columnDefinition = "TEXT") // PARA QUE A JPA GERE UM CAMPO NO DB COMO 'TEXTO' E NÃO COMO 'VARCHAR(255)'
 	private String shortDescription;
 	@Column(columnDefinition = "TEXT")
 	private String longDescription;
@@ -33,7 +33,6 @@ public class Game {
 
 	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
 			String shortDescription, String longDescription) {
-		super();
 		this.id = id;
 		this.title = title;
 		this.year = year;
@@ -117,6 +116,7 @@ public class Game {
 		this.longDescription = longDescription;
 	}
 
+	// PARA REALIZAR A COMPARAÇÃO ENTRE OS JOGOS
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

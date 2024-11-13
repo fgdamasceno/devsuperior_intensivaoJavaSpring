@@ -6,11 +6,11 @@ import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-@Embeddable
+@Embeddable // DECLARA QUE ESTA CLASSE SERÁ INTEGRADA POR OUTRAS ENTIDADES - CHAVE PRIMARIA COMPOSTA
 public class BelongingPK {
 	
-	@ManyToOne
-	@JoinColumn(name = "game_id")
+	@ManyToOne // JPA CONFIGURAÇÃO DE RELACIONAMENTO
+	@JoinColumn(name = "game_id") // CONFIGURA A CHAVE ESTRANGEIRA FK 
 	private Game game;
 	
 	@ManyToOne
@@ -22,7 +22,6 @@ public class BelongingPK {
 	}
 
 	public BelongingPK(Game game, GameList list) {
-		super();
 		this.game = game;
 		this.list = list;
 	}

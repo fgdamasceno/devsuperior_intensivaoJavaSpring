@@ -10,7 +10,9 @@ import jakarta.persistence.Table;
 @Table(name = "tb_belonging")
 public class Belonging {
 	
-	@EmbeddedId
+	// CLASSE RESPONSAVEL PELO RELACIONAMENTO 'GAME' <-> 'GAMELIST'
+	
+	@EmbeddedId // DEFINE OS ATRIBUTOS DA CLASSE 'BELONGINGPK' COMO SENDO CHAVE PRIMARIA DA TABELA 'TB_BELONGING'
 	private BelongingPK id = new BelongingPK();
 	
 	private Integer position;

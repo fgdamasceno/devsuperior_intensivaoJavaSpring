@@ -12,17 +12,17 @@ import com.aulasjavaspring.dslist.entities.Game;
 import com.aulasjavaspring.dslist.projections.GameMinProjection;
 import com.aulasjavaspring.dslist.repositories.GameRepository;
 
-
-
-@Service // ou @Component
+@Service // OU @Component -> REGISTRA COMO SENDO UM COMPONENTE DO SISTEMA
 public class GameService {
 	
-	@Autowired
-	private GameRepository gameRepository;
+	// RESPONSÁVEL POR IMPLEMENTAR A LÓGICA DE NEGÓCIOS
 	
-	@Transactional(readOnly = true)
+	@Autowired // 
+	private GameRepository gameRepository; // INJETA 'GameRepository' DENTRO DO 'GameService'
+	
+	@Transactional(readOnly = true) // 
 	public GameDTO findById(Long id) {
-		Game result = gameRepository.findById(id).get();
+		Game result = gameRepository.findById(id).get(); // CABE TRATAMENTO DE EXCEÇAO
 //		GameDTO dto = new GameDTO(result); // LONG VERSION
 //		return dto;
 		return new GameDTO(result);
@@ -30,7 +30,7 @@ public class GameService {
 	
 	@Transactional(readOnly = true)
 	public  List<GameMinDTO> findAll() {
-		List<Game> result = gameRepository.findAll();
+		List<Game> result = gameRepository.findAll(); // CONSULTA O BD E TRAZ AS INFORMAÇÕES SOLICITADAS EM FORMA DE LISTA
 //		List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList(); // LONG VERSION
 //		return dto;
 		return result.stream().map(x -> new GameMinDTO(x)).toList();
